@@ -1,15 +1,6 @@
-
-
-  default: &default
+default: &default
   encoding: utf8
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
-    adapter: postgresql
-  encoding: unicode
-  database: your_database_name
-  username: your_username
-  password: your_password
-  host: your_host
-  port: your_port
 
 development:
   <<: *default
@@ -17,7 +8,7 @@ development:
   username: root
   password:
   host: localhost
-  database: protospace-40792
+  database: protospace-40792_development
 
 test:
   <<: *default
@@ -25,7 +16,7 @@ test:
   username: root
   password:
   host: localhost
-  database: protospace-40792
+  database: protospace-40792_test
 
 production:
   <<: *default
