@@ -1,6 +1,5 @@
 class PrototypesController < ApplicationController
   before_action :set_prototype, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :show]
   
 
   def index
@@ -19,6 +18,10 @@ class PrototypesController < ApplicationController
 
   def edit
     #@prototype = Prototype.find(params[:id])
+    unless current_user.id == @prototype.user_id
+      redirect_to root_path
+    end
+
   end
 
   def update
@@ -52,10 +55,5 @@ class PrototypesController < ApplicationController
     @prototype = Prototype.find(params[:id])
   end
 
-  def move_to_index
-    unless current_user
-      redirect_to root_path
-    end
-  end
 
 end
