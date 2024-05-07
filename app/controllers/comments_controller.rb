@@ -5,9 +5,9 @@ class CommentsController < ApplicationController
     @comment = @prototype.comments.build(comment_params)
   
     if @comment.save
-      redirect_to @prototype, notice: 'Comment was successfully created.'
+      redirect_to @prototype
     else
-      render :new
+      render "prototypes/show"
     end
   end
 
