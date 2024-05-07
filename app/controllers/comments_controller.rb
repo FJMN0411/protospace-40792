@@ -4,10 +4,10 @@ class CommentsController < ApplicationController
     comment = Comment.create(comment_params)
     redirect_to "/prototypes/#{comment.prototype.id}"
   
-    if @comment.save
-      redirect_to @prototype
+    if comment.save
+      redirect_to "/prototypes/#{comment.prototype.id}"
     else
-      render "prototypes/#{comment.prototype.id}"
+      render template: "prototype/show"
     end
 
     
