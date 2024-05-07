@@ -1,15 +1,10 @@
 class CommentsController < ApplicationController
 
   def create
-    comment = Comment.create(comment_params)
-  
-    if comment.save
-      redirect_to "/prototypes/#{comment.prototype.id}"
-    else
-      render template: "prototypes/show"
+    unless comment_params[:content].blank?
+      comment = Comment.create(comment_params)
+      redirect_to prototype_path(params[:prototype_id])
     end
-
-    
   end
 
   private
